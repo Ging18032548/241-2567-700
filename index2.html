@@ -4,23 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        /* ส่วนนี้คือ CSS */
+        /* ใช้สำหรับแต่ง (id class ) */ 
+        @font-face {
+            font-family: 'Kanit';
+            src: url('./Kanit/Kanit-Regular.ttf');
+        }
+        body {
+            background-color: rgb(247, 235, 216);
+            font-family: 'Kanit';
+            font-size: 14px;
+        }
+            #register {
+                font-size: 2rem;
+            }
+
+            .header-form {
+                font-weight:800;
+            }
+
+            .gender {
+                display: flex;
+                flex-direction: row-reverse;
+            }
+            .left {
+                float: left;
+            }
+            .right {
+                float: right;
+            }
+            .box {
+                background-color: rgb(199, 183, 213);
+                height: 20px;
+                width: 50vw;
+            }
+    </style>
+
 </head>
 <body>
 <!-- form -->
- <h1>Regirter form</h1>
- ชื่อ <input type="text">
-นามสกุล <input type="text"> <br>
-อายุ <input type="number" min="0" max="100">
-<div>
+<div class="box">
+
+</div>
+
+ <div  id ="register">Register form</div>
+ <span class="header-form">ชื่อ</span>
+ <input class="form"  type="text">
+ <span class="header-form">นามสกุล</span>
+ <input  class="form" type="text"> <br>
+อายุ <input class="form" type="number" min="0" max="100">
+    <div class="gender">
     เพศ
     <div>
         <input name="gender" type="radio"> ชาย
     </div>
-    <div>
+    <div >
         <input name="gender" type="radio"> หญิง 
     </div>
-    <div>
-        <input name="gender" type="radio"> อืนๆ
+    <div >
+        <input name="gender" type="radio"> อื่นๆ
     </div>
 </div>
 <div>
