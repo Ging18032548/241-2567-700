@@ -1,68 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-         
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
     <link rel="stylesheet" href="styles.css">
-    
+    <script src="script.js"></script>
+    <script src="user.js"></script>
+
 </head>
 <body>
-    <a href="user.html">Go to User management</a>
-    <div class ="container">
-        <div class="header">
-            Register form
-        </div>
-        <div class="flex form-input" >
-            <div class="header-form">ชื่อ</div>
-            <input class="form" name="firstname"  type="text">
-        </div>
-        <div class="flex form-input">
-            <div class="header-form">นามสกุล</div>
-            <input  class="form" name="lastname" type="text">
-        </div>
-        <div class="flex form-input">
-            <div class="header-form">อายุ</div>
-            <input class="form" name="age" type="number" min="0" max="100">
-        </div>
-        <div class="flex gender form-input">
-            <div class="header-form">เพศ</div>
-             <div>
-                <div>
-                    <input name="gender" type="radio"  value="ชาย"> ชาย
-                </div>
-                <div>
-                    <input name="gender" type="radio" value="หญิง"> หญิง 
-                </div>
-                <div>
-                    <input name="gender" type="radio" value="อื่นๆ"> อื่นๆ
-                </div>
-            </div>
-        </div>
-    <div class="form-input">
-            <div class="header-form">งานอดิเรก</div>
-            <div>
-                <input name="interest" type="checkbox" value="อ่านหนังสือ"> อ่านหนังสือ
-            </div>
-            <div>
-                <input name="interest" type="checkbox" value="ดูหนัง"> ดูหนัง
-            </div>
-            <div>
-                <input name="interest" type="checkbox" value="ฟังเพลง"> ฟังเพลง
-             </div>
-    </div>
-    <div class="form-input">
-        คำอธิบาย
-        <textarea name="description"></textarea>
+    <a href="user.html" class="btn user-management">Go to User Management</a>
+    
+    <div class="overlay"></div>
+    <div class="wrapper">
+        <div class="container">
+            <div class="header">Register form</div>
 
-    <div id= message class="message"></div>
+            <form onsubmit="return submitData(event)">
+                <div class="flex form-input">
+                    <label class="header-form" for="firstname">Name</label>
+                    <input id="firstname" class="form" name="firstname" type="text" placeholder="First name" required>
+                </div>
 
-    <div class="center">
-        <button onclick="submitData()" class="button">ส่งข้อมูล</button>
+                <div class="flex form-input">
+                    <label class="header-form" for="lastname">Lastname</label>
+                    <input id="lastname" class="form" name="lastname" type="text" placeholder="Last name" required>
+                </div>
+
+                <div class="flex form-input">
+                    <label class="header-form" for="age">Age</label>
+                    <input id="age" class="form" name="age" type="number" min="0" max="100" required>
+                </div>
+
+                <div class="flex gender form-input">
+                    <label class="header-form">Gender</label>
+                    <div class="options">
+                        <input id="male" name="gender" type="radio" value="Male" required>
+                        <label for="male">Male</label>
+                        <input id="female" name="gender" type="radio" value="Female">
+                        <label for="female">Female</label>
+                        <input id="other" name="gender" type="radio" value="Other">
+                        <label for="other">Other</label>
+                    </div>
+                </div>
+
+                <div class="form-input">
+                    <label class="header-form">Interests</label>
+                    <div class="options">
+                        <input id="read" name="interest[]" type="checkbox" value="Read a book">
+                        <label for="read">Read a book</label>
+                        <input id="watch" name="interest[]" type="checkbox" value="Watch movie">
+                        <label for="watch">Watch a movie</label>
+                        <input id="music" name="interest[]" type="checkbox" value="Listen to music">
+                        <label for="music">Listen to music</label>
+                    </div>
+                </div>
+
+                <div class="form-input">
+                    <label class="header-form" for="description">Description</label>
+                    <textarea id="description" name="description"></textarea>
+                </div>
+
+                <div id="message" class="message" style="display:none;"></div>
+
+                <div class="center">
+                    <button type="submit" class="button">Submit data</button>
+                </div>
+            </form>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
-    <script src="index.js"></script>
+
+    <script>
+    function submitData(event) {
+        event.preventDefault();
+        document.getElementById("message").innerText = "Data saved successfully!";
+        document.getElementById("message").style.display = "block";
+
+        setTimeout(() => {
+            window.location.href = "register.html"; 
+        }, 2000); //2s
+    }
+    </script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector(".overlay").style.transform = "translateX(0)";
+        });
+    </script>
+    
+    
 </body>
 </html>

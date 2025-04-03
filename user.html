@@ -3,13 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>User Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="userpage.css">
+    <script src="script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <a href="index.html">Back to register</a>
-    User management page
-    <div id="user"></div>
+    <div class="main-container"></div>
+    <div class="content-box">
+        <a href="index2_web.html" class="btn back-to-register">Back to Register</a>
+        <a href="user.html" class="btn">Insert New User</a>
+        <h2>User Management Page</h2>
+
+        <input type="text" id="search" class="search-box" placeholder="🔍 search">
+        <div id="searchMessage" class="search-message">Information was found</div>
+
+        <table id="user-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="user">
+                <tr>
+                    <td>1</td>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>
+                        <button class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Jane</td>
+                    <td>Smith</td>
+                    <td>
+                        <button class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- ข้อความแจ้งเตือนหลังการอัพเดต -->
+        <div id="message" class="message"></div>
+    </div>
+
+    <script src="delete.js"></script>
+
+
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
     <script src="user.js"></script>
+    <script src="script.js"></script>
+    <script src="index.js"></script>
+    <script src="delete.js"></script>
 </body>
 </html>

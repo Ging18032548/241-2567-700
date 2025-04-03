@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert New User</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="userpage.css">
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <div class="content-box">
+            <a href="user.html" class="btn back-to-register">Back to User Management</a>
+            <h2>Insert New User</h2>
+
+            <form id="userForm" onsubmit="submitForm(event)">
+                <div class="form-input">
+                    <label for="userId">User ID</label>
+                    <input type="text" id="userId" name="userId" required>
+                </div>
+                <div class="form-input">
+                    <label for="userFirstname">Firstname</label>
+                    <input type="text" id="userFirstname" name="userFirstname" required>
+                </div>
+                <div class="form-input">
+                    <label for="userLastname">Lastname</label>
+                    <input type="text" id="userLastname" name="userLastname" required>
+                </div>
+                <div class="center">
+                    <button type="submit" class="btn">Submit</button>
+                </div>
+            </form>
+
+            <!-- ข้อความแจ้งเตือนหลังการอัพเดต -->
+            <div id="message" class="message" style="display:none;"></div>
+        </div>
+    </div>
+
+    <script>
+        async function submitForm(event) {
+            event.preventDefault();
+
+            const userId = document.getElementById("userId").value;
+            const userFirstname = document.getElementById("userFirstname").value;
+            const userLastname = document.getElementById("userLastname").value;
+
+            const userData = {
+                id: userId,
+                firstname: userFirstname,
+                lastname: userLastname
+            };
+
+            try {
+                const response = await axios.post("http://localhost:8880/users", userData);
+
+                // แสดงข้อความหลังจากส่งข้อมูลสำเร็จ
+                document.getElementById("message").innerText = response.data.message;
+                document.getElementById("message").style.display = "block";
+
+                // รีเฟรชหน้าเพื่อแสดงข้อมูลใหม่
+                setTimeout(() => {
+                    window.location.href = "user.html"; // กลับไปหน้าจัดการผู้ใช้
+                }, 2000);
+
+            } catch (error) {
+                console.error("Error:", error);
+                document.getElementById("message").innerText = "Error inserting data!";
+                document.getElementById("message").style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
